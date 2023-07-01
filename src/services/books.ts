@@ -9,6 +9,7 @@ const getAllBooks = async (): Promise<Book[]> => {
       return [];
    } else {
       const books: Book[] = await response.json();
+      console.log(books);
       return books;
    }
 };

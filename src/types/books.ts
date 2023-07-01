@@ -6,6 +6,7 @@ export type Book = {
    name: string;
    avatar: string;
    source: string;
+   description?: string;
    book_id: number;
    cover_image: string;
    title: string;
