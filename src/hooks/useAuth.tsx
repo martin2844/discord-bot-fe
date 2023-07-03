@@ -36,8 +36,10 @@ export function useAuth() {
 
    const isAuthenticated = (): boolean => {
       // Check if there's a token in localStorage
-      const token = localStorage.getItem("token");
-      return !!token; // Will return true if token exists, false otherwise
+      if (localStorage) {
+         const token = localStorage.getItem("token");
+         return !!token; // Will return true if token exists, false otherwise
+      }
    };
 
    return {
