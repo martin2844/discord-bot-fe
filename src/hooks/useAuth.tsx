@@ -34,7 +34,7 @@ export function useAuth() {
       }
    };
 
-   const isAuthenticated = (): boolean => {
+   const isAuthenticated = (): boolean | undefined => {
       // Check if there's a token in localStorage
       if (localStorage) {
          const token = localStorage.getItem("token");
