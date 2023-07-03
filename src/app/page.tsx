@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 
 const BookGallery = dynamic(
-   () => import("./components/BookGallery/BookGallery"),
+   () => import("../components/BookGallery/BookGallery"),
    {
       loading: () => <p>Loading...</p>,
    }

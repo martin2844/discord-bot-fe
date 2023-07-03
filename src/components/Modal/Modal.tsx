@@ -31,7 +31,7 @@ const Modal: React.FC<ModalProps> = ({ children, isOpen, setIsOpen }) => {
          className={modalClasses}
          onClick={handleClick}
       >
-         <div className="absolute bg-white rounded-md z-50 p-8">
+         <div className="absolute bg-white rounded-md z-50 p-8 ml-16 mr-14">
             <div
                onClick={() => setIsOpen(false)}
                className="relative -top-5 text-right text-lg font-bold cursor-pointer"

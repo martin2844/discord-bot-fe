@@ -10,9 +10,12 @@ import Footer from "./Footer";
 import { Book } from "@/types/books";
 import Modal from "../Modal/Modal";
 import Description from "./Description";
+import MoreContent from "./MoreContent";
+import ActionsContent from "./ActionsContent";
 
 const Card = ({ book }: { book: Book }) => {
    const [isOpen, setIsOpen] = useState(false);
+   const [moreOpen, setMoreOpen] = useState(false);
 
    let makeShiftTitle = book.file.split("/").pop() as string;
    makeShiftTitle = makeShiftTitle.replace(/[_-]/g, " "); // replace "_" and "-" with space
@@ -33,7 +36,7 @@ const Card = ({ book }: { book: Book }) => {
                   <Header title={title} author={book.author} />
                   <Description
                      text={book?.description || "sin descripcion"}
-                     moreAction={console.log}
+                     moreAction={() => setMoreOpen(true)}
                   />
                </div>
             </div>
@@ -47,7 +50,14 @@ const Card = ({ book }: { book: Book }) => {
             </div>
          </article>
          <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-            test
+            <ActionsContent book={book} />
+         </Modal>
+         <Modal isOpen={moreOpen} setIsOpen={setMoreOpen}>
+            <MoreContent
+               description={book?.description}
+               keywords={book?.keywords}
+               id={book.book_id}
+            />
          </Modal>
       </>
    );

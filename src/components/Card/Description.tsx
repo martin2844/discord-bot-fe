@@ -18,7 +18,7 @@ const Description = ({
                className="underline decoration-2 decoration-red-600 cursor-pointer"
                onClick={moreAction}
             >
-               mas
+               más
             </span>
             ]
          </p>

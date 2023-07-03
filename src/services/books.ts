@@ -1,4 +1,6 @@
 import { Book } from "@/types/books";
+import { fetchProtectedData } from "../utils/fetchProtectedData";
+import { ServiceStatusResponse } from "@/types/responses";
 
 const getAllBooks = async (): Promise<Book[]> => {
    const response = await fetch(
@@ -14,4 +16,19 @@ const getAllBooks = async (): Promise<Book[]> => {
    }
 };
 
-export { getAllBooks };
+const updateAiDetails = (): Promise<ServiceStatusResponse> => {
+   return fetchProtectedData(
+      "https://api.libros.codigomate.com/api/update/details",
+      {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+         },
+         body: JSON.stringify({
+            aiData: true,
+         }),
+      }
+   );
+};
+
+export { getAllBooks, updateAiDetails };
