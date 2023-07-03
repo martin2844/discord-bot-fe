@@ -25,7 +25,9 @@ export function useAuth() {
          const data = await res.json();
 
          // Set token in localStorage
-         localStorage.setItem("token", data.token);
+         if (typeof window !== "undefined") {
+            localStorage.setItem("token", data.token);
+         }
 
          setError(null);
       } catch (error) {
@@ -36,7 +38,7 @@ export function useAuth() {
 
    const isAuthenticated = (): boolean | undefined => {
       // Check if there's a token in localStorage
-      if (localStorage) {
+      if (typeof window !== "undefined") {
          const token = localStorage.getItem("token");
          return !!token; // Will return true if token exists, false otherwise
       }

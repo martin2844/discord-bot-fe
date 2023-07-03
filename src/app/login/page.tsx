@@ -10,17 +10,18 @@ const AdminPage = () => {
    const handleLogin = async (event: FormEvent) => {
       console.log("Handling login");
       event.preventDefault();
-
-      try {
-         setError(null);
-         const response = await adminLogin(password);
-         if (!response.ok) throw new Error(`HTTP status ${response.status}`);
-         const data = await response.json();
-         localStorage.setItem("token", data.token);
-         router.push("/admin/dashboard");
-      } catch (err) {
-         setError("Failed to login");
-         console.error(err);
+      if (typeof window !== "undefined") {
+         try {
+            setError(null);
+            const response = await adminLogin(password);
+            if (!response.ok) throw new Error(`HTTP status ${response.status}`);
+            const data = await response.json();
+            localStorage.setItem("token", data.token);
+            router.push("/admin/dashboard");
+         } catch (err) {
+            setError("Failed to login");
+            console.error(err);
+         }
       }
    };
 
