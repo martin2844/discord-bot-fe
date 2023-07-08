@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import UserIcon from "../Icons/User";
+import UserIcon from "../Generics/Icons/User";
 import { useAuth } from "../../hooks/useAuth";
 
 const Navbar = () => {

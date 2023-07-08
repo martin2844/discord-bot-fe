@@ -2,19 +2,17 @@
 import { useState } from "react";
 import React from "react";
 
-import OptionsToggle from "./OptionsToggle";
-import CoverColumn from "./CoverColumn";
+import CoverColumn from "../BookCard/CoverColumn";
 
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "../BookCard/Header";
+import Footer from "../BookCard/Footer";
 import { Book } from "@/types/books";
-import Modal from "../Modal/Modal";
-import Description from "./Description";
-import MoreContent from "./MoreContent";
-import ActionsContent from "./ActionsContent";
+import Description from "../BookCard/Description";
+import MoreContent from "../BookCard/MoreContent";
+import ActionsContent from "../BookCard/ActionsContent";
+import CardWithModals from "../Generics/CardWithModals/CardWithModals";
 
-const Card = ({ book }: { book: Book }) => {
-   const [isOpen, setIsOpen] = useState(false);
+const BookCard = ({ book }: { book: Book }) => {
    const [moreOpen, setMoreOpen] = useState(false);
 
    let makeShiftTitle = book.file.split("/").pop() as string;
@@ -26,10 +24,22 @@ const Card = ({ book }: { book: Book }) => {
       makeShiftTitle = makeShiftTitle.slice(0, 25) + "...";
    const title = book?.title || makeShiftTitle;
 
+   const moreContent = (
+      <MoreContent
+         description={book?.description}
+         keywords={book?.keywords}
+         id={book.book_id}
+      />
+   );
+
    return (
       <>
-         <article className="px-8 bg-white border rounded-md shadow-md mt-4  relative">
-            <OptionsToggle onClick={() => setIsOpen(true)} />
+         <CardWithModals
+            actionsModalContent={<ActionsContent book={book} />}
+            moreContentModal={moreContent}
+            moreOpen={moreOpen}
+            setMoreOpen={setMoreOpen}
+         >
             <div className="mb-4 py-4 flex flex-row">
                <CoverColumn file={book.file} coverImage={book?.cover_image} />
                <div className="flex flex-col">
@@ -48,19 +58,9 @@ const Card = ({ book }: { book: Book }) => {
                   subject={book?.subject}
                />
             </div>
-         </article>
-         <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-            <ActionsContent book={book} />
-         </Modal>
-         <Modal isOpen={moreOpen} setIsOpen={setMoreOpen}>
-            <MoreContent
-               description={book?.description}
-               keywords={book?.keywords}
-               id={book.book_id}
-            />
-         </Modal>
+         </CardWithModals>
       </>
    );
 };
 
-export default Card;
+export default BookCard;

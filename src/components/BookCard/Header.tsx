@@ -1,4 +1,4 @@
-import Rating from "../Rating/Rating";
+import Rating from "../Generics/Rating/Rating";
 
 const Header = ({ title, author }: { title: string; author?: string }) => {
    return (
