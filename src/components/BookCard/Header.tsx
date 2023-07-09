@@ -4,7 +4,7 @@ const Header = ({ title, author }: { title: string; author?: string }) => {
    return (
       <header>
          <h3
-            className="text-lg font-semibold"
+            className="text-sm sm:text-lg font-semibold"
             style={{
                wordWrap: "break-word",
                overflow: "hidden",
@@ -17,7 +17,7 @@ const Header = ({ title, author }: { title: string; author?: string }) => {
          >
             {title}
          </h3>
-         <h4>de {author || "unknown"}</h4>
+         <h4 className="text-sm">de {author || "unknown"}</h4>
          <div className="-ml-1">
             <Rating rating={5} />
          </div>

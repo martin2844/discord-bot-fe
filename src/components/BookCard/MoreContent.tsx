@@ -48,7 +48,7 @@ const MoreContent = ({ description, keywords, id }: MoreContentProps) => {
             <div className="flex flex-col mt-2">
                <p className="text-sm font-bold">Temas</p>
                <p className="text-sm mt-2">
-                  {keywords ? <div>{keywordsSplit}</div> : "sin temas"}
+                  {keywords ? keywordsSplit : "sin temas"}
                </p>
             </div>
          </div>

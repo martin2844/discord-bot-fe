@@ -17,7 +17,7 @@ const CoverColumn = ({ file, coverImage }: CoverColumnProps) => {
          </a>
          <p>
             <a
-               className="underline decoration-2 decoration-red-600"
+               className="text-sm sm:text-md underline decoration-2 decoration-red-600"
                href={file}
             >
                Descargar

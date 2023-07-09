@@ -11,7 +11,7 @@ const Description = ({
       return str.length > 200 ? str.substring(0, 200) + "..." : str;
    };
    return (
-      <div className="mt-2 text-sm">
+      <div className="mt-2 text-xs sm:text-sm">
          <p>
             {truncate(text)} &nbsp; [
             <span

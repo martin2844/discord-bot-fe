@@ -29,7 +29,7 @@ const CardMap = ({ b }: { b: Book[] }) => {
 
    return (
       <>
-         <div className="flex flex-row w-full items-center justify-center">
+         <div className="flex flex-row w-full items-center justify-center mt-4">
             <input
                className="p-2 border-2 rounded-md"
                type="text"
