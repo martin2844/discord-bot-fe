@@ -13,7 +13,7 @@ const MoreContent = ({ description, keywords, id }: MoreContentProps) => {
          return (
             <span
                key={i}
-               className="text-xs bg-gray-200 rounded-md px-2 py-1 mr-1"
+               className="text-xs bg-gray-200 rounded-md py-1 sm:px-2 mr-2"
             >
                {keyword}
             </span>
@@ -38,7 +38,7 @@ const MoreContent = ({ description, keywords, id }: MoreContentProps) => {
 
    return (
       <div>
-         <div className="flex flex-col">
+         <div className="flex flex-col px-8 sm:px-0">
             <div className="flex flex-col">
                <p className="text-sm font-bold">Descripción</p>
                <p className="text-sm leading-relaxed mt-2 text-justify">
@@ -48,7 +48,7 @@ const MoreContent = ({ description, keywords, id }: MoreContentProps) => {
             <div className="flex flex-col mt-2">
                <p className="text-sm font-bold">Temas</p>
                <p className="text-sm mt-2">
-                  {keywords ? keywordsSplit : "sin temas"}
+                  {keywords ? <div>{keywordsSplit}</div> : "sin temas"}
                </p>
             </div>
          </div>

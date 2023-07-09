@@ -48,7 +48,7 @@ const CardMap = ({ b }: { b: Book[] }) => {
             </div>
          </div>
          {books.map((b) => (
-            <div key={b.book_id} className="w-full lg:w-1/2 p-12">
+            <div key={b.book_id} className="sm:w-full lg:w-1/2 sm:p-12">
                <BookCard key={b.book_id} book={b} />
             </div>
          ))}
