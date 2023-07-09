@@ -56,6 +56,7 @@ const CardMap = ({ b }: { b: Book[] }) => {
             <div className="flex flex-row flex-wrap ">
                {subjects.map((s) => (
                   <span
+                     key={s}
                      className="text-sm border-indigo-500 my-2 mr-2 border px-3 bg-indigo-200 rounded-lg cursor-pointer font-semibold"
                      onClick={() => filterBooks(s)}
                   >
