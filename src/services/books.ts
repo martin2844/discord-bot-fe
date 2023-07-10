@@ -5,7 +5,7 @@ import { ServiceStatusResponse } from "@/types/responses";
 const getAllBooks = async (): Promise<Book[]> => {
    const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/books`,
-      { next: { tags: ["books"] } }
+      { next: { tags: ["books"], revalidate: 0 } }
    );
    if (!response.ok) {
       return [];
