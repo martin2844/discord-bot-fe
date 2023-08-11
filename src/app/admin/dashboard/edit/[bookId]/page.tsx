@@ -1,10 +1,12 @@
-const BookId = ({ params }: { params: { bookId: string } }) => {
+import BookCard from "@/components/BookEdit/BookCard";
+import { getBook } from "@/services/books";
+
+const BookId = async ({ params }: { params: { bookId: string } }) => {
+   const bookData = await getBook(params.bookId);
    return (
       <>
-         <div>
-            {params.bookId}
-            <br />
-            asdasdads
+         <div className="mt-8">
+            {bookData && <BookCard data={bookData as any} />}
          </div>
       </>
    );
