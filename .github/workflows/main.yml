@@ -26,6 +26,8 @@ jobs:
 
          - name: Build
            run: npm run build
+           env:
+              NEXT_PUBLIC_API_URL: "https://google.com"
 
          - name: Deploy
            uses: appleboy/ssh-action@master
