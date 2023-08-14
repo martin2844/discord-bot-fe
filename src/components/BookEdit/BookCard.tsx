@@ -1,9 +1,9 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { useState } from "react";
 import SubmitButton from "../Generics/SubmitButton/SubmitButton";
 import Toast from "../Generics/Toast/Toast";
-import { modifyBook } from "@/services/books";
+import { modifyBook, deleteBook } from "@/services/books";
 
 type BookData = {
    book_id: number;
@@ -28,8 +28,8 @@ type Props = {
 };
 
 const BookCard: React.FC<Props> = ({ data }) => {
-   const router = useRouter();
    // States for each input field
+   const router = useRouter();
    const [title, setTitle] = useState(data.title || "");
    const [author, setAuthor] = useState(data.author || "");
    const [subject, setSubject] = useState(data.subject || "");
@@ -37,10 +37,26 @@ const BookCard: React.FC<Props> = ({ data }) => {
    const [keywords, setKeywords] = useState(data.keywords || "");
    const [loading, setLoading] = useState(false);
    const [showToast, setShowToast] = useState(false);
+   const [deleteLoading, setDeleteLoading] = useState(false);
    const [toastMessage, setToastMessage] = useState("error");
 
+   const handleDelete = async () => {
+      setDeleteLoading(true);
+      try {
+         deleteBook(data.book_id + "", localStorage.getItem("token")!);
+         setToastMessage("success");
+      } catch (error) {
+         setToastMessage("error");
+         console.log(error);
+      } finally {
+         setShowToast(true);
+         setDeleteLoading(false);
+         handleBack();
+      }
+   };
+
    const handleBack = () => {
-      router.back();
+      router.push("/admin/dashboard");
    };
 
    const handleSubmit = async () => {
@@ -166,8 +182,16 @@ const BookCard: React.FC<Props> = ({ data }) => {
                />
             </div>
 
-            <div className="mt-4">
+            <div className="mt-4 flex flex-row">
                <SubmitButton loading={loading} onSubmit={handleSubmit} />
+               <div className="ml-2">
+                  <SubmitButton
+                     loading={deleteLoading}
+                     onSubmit={handleDelete}
+                     label="Delete Book"
+                     deleteBtn={true}
+                  />
+               </div>
             </div>
             <Toast
                type={toastMessage as any}

@@ -1,20 +1,24 @@
-import React from "react";
-
 type Props = {
    loading: boolean;
    onSubmit: () => void;
    label?: string;
+   deleteBtn?: boolean;
 };
 
 const SubmitButton: React.FC<Props> = ({
    loading,
    onSubmit,
    label = "Submit Changes",
+   deleteBtn = false,
 }) => {
    return (
       <button
-         className={`bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded ${
+         className={` text-white py-2 px-4 rounded ${
             loading ? "cursor-not-allowed" : ""
+         } ${
+            deleteBtn
+               ? "bg-red-500 hover:bg-red-600"
+               : "bg-blue-500 hover:bg-blue-600"
          }`}
          onClick={onSubmit}
          disabled={loading}
