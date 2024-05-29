@@ -41,7 +41,7 @@ const BookCard = ({ book }: { book: Book }) => {
             setMoreOpen={setMoreOpen}
          >
             <div className="mb-4 py-4 flex flex-row">
-               <CoverColumn file={book.file} coverImage={book?.cover_image} />
+               <CoverColumn bookId={book.id} coverImage={book?.cover_image} />
                <div className="flex flex-col">
                   <Header title={title} author={book.author} />
                   <Description
